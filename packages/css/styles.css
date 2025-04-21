@@ -1,5 +1,5 @@
 /* ==================== GOOGLE FONTS ====================*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -24,7 +24,7 @@
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
 
   /*========== Font and typography ==========*/
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Poppins', sans-serif;
 
   /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
   --big-font-size: 2rem;
@@ -604,6 +604,17 @@ img {
   display: grid;
   grid-template-columns: 1fr max-content 1fr;
   column-gap: 1.5rem;
+  /*   max-width: 800px; */
+  /*   width: 130%; */
+  width: 170%;
+}
+
+.qualification__data_2 {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  column-gap: 1.5rem;
+  /*   max-width: 800px; */
+  width: 80%;
 }
 
 .qualification__title {
@@ -625,26 +636,58 @@ img {
 
 .qualification__rounder {
   display: inline-block;
-  width: 13px;
-  height: 13px;
+  width: 120px;
+  height: 120px;
   background-color: var(--first-color);
   border-radius: 50%;
+  position: relative;
+  /* 確保圖標能夠相對於這個元素定位 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  /* 確保這個值高於 .qualification__line 的 z-index */
 }
 
 .qualification__line {
   display: block;
-  width: 1px;
+  width: 5px;
   height: 100%;
   background-color: var(--first-color);
-  transform: translate(6px, -7px);
+  transform: translate(56px, -40px);
+  z-index: 1;
+  /* 確保這個值高於 .qualification__line 的 z-index */
+}
+
+.qualification__school-emblem {
+  width: 90%;
+  /* 使圖片寬度填滿容器 */
+  height: auto;
+  /* 保持圖片比例 */
+  max-width: 100%;
+  /* 防止圖片超出容器 */
+  border-radius: 50%;
 }
 
 .qualification__content[data-content] {
   display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  /* 其他必要的样式 */
+}
+
+/* 为默认显示的 "Education" 标签内容添加一个额外的类，如 .default-show */
+.default-show {
+  display: block;
+  opacity: 1;
 }
 
 .qualification__active[data-content] {
   display: block;
+  /* 活动标签显示内容 */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  /* 过渡效果 */
 }
 
 .qualification__button.qualification__active {
@@ -780,7 +823,7 @@ img {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  content: "";
+  content: '';
 }
 
 .swiper-portfolio-icon {
@@ -1327,4 +1370,54 @@ img {
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
   }
+  /* ==================== SKILLS LIST WITH LOGOS ==================== */
+
+  /* Styles for the container holding the list of skills in a category */
+  /* Assumes skills__list grid already provides some grid layout */
+  .skills__list.grid {
+    /* You might want to adjust grid columns here if needed */
+    /* Example: display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem; */
+  }
+
+  /* Styles for each individual skill item (logo and name) */
+  .skill-item {
+    display: flex; /* Arrange logo and name in a row */
+    align-items: center; /* Vertically align logo and name */
+    margin-bottom: 1rem; /* Space between skill items */
+    /* Add any other styling like padding, border, background if desired */
+    justify-content: flex-start; /* Align items to the start */
+  }
+
+  /* Styles for the skill logo image */
+  .skill-logo {
+    width: 24px; /* Adjust size as needed */
+    height: 24px; /* Adjust size as needed */
+    margin-right: 0.75rem; /* Space between logo and skill name */
+    object-fit: contain; /* Ensure image scales without distortion */
+  }
+
+  /* Styles for the skill name text */
+  .skill-name {
+    font-size: var(
+      --normal-font-size
+    ); /* Use your defined font size variables */
+    color: var(--text-color); /* Use your defined text color variables */
+    /* Add any other text styling */
+  }
+
+  /* Adjust skills__data or skills__titles if needed to remove old padding/margins */
+  /* that were for the bar chart */
+  .skills__data {
+    /* Remove or adjust styles that were specific to the bar */
+    /* padding: 0; */
+  }
+
+  .skills__titles {
+    /* Remove or adjust styles that were specific to the bar */
+    /* margin-bottom: 0; */
+  }
+
+  /* You might need to review and adjust existing styles for .skills__content,
+ .skills__header, .skills__list grid, etc., to ensure the new layout
+ integrates correctly with your existing design. */
 }
